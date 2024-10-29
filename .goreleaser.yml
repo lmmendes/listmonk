@@ -13,11 +13,7 @@ builds:
     main: ./cmd
     goos:
       - linux
-      - windows
       - darwin
-      - freebsd
-      - openbsd
-      - netbsd
     goarch:
       - amd64
       - arm64
@@ -52,6 +48,7 @@ dockers:
     build_flag_templates:
       - --platform=linux/amd64
       - --push
+      - --pull
       - --label=org.opencontainers.image.title={{ .ProjectName }}
       - --label=org.opencontainers.image.description={{ .ProjectName }}
       - --label=org.opencontainers.image.url=https://github.com/{{ .Env.GITHUB_ORG }}/{{ .ProjectName }}
@@ -67,6 +64,7 @@ dockers:
   - use: buildx
     goos: linux
     goarch: arm64
+    goarm: 8
     ids:
       - listmonk
     image_templates:
@@ -77,6 +75,7 @@ dockers:
     build_flag_templates:
       - --platform=linux/arm64/v8
       - --push
+      - --pull
       - --label=org.opencontainers.image.title={{ .ProjectName }}
       - --label=org.opencontainers.image.description={{ .ProjectName }}
       - --label=org.opencontainers.image.url=https://github.com/{{ .Env.GITHUB_ORG }}/{{ .ProjectName }}
@@ -103,6 +102,7 @@ dockers:
     build_flag_templates:
       - --platform=linux/arm/v6
       - --push
+      - --pull
       - --label=org.opencontainers.image.title={{ .ProjectName }}
       - --label=org.opencontainers.image.description={{ .ProjectName }}
       - --label=org.opencontainers.image.url=https://github.com/{{ .Env.GITHUB_ORG }}/{{ .ProjectName }}
@@ -129,6 +129,7 @@ dockers:
     build_flag_templates:
       - --platform=linux/arm/v7
       - --push
+      - --pull
       - --label=org.opencontainers.image.title={{ .ProjectName }}
       - --label=org.opencontainers.image.description={{ .ProjectName }}
       - --label=org.opencontainers.image.url=https://github.com/{{ .Env.GITHUB_ORG }}/{{ .ProjectName }}
